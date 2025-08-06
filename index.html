@@ -34,6 +34,8 @@
       font-family: 'Montserrat', sans-serif;
       background: #f8fafc;
       color: #1e293b;
+      padding-top: 7rem;
+      /* Ajustado para a navbar com margem superior */
     }
 
     .particles-js {
@@ -86,6 +88,22 @@
       animation: floating 6s ease-in-out infinite;
     }
 
+    /* Efeito de navbar ao scroll */
+    nav {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    nav.scrolled {
+      top: 0.5rem;
+      background-color: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 4px 30px rgba(0, 102, 255, 0.1);
+    }
+
+    /* Ajuste do gradiente no hover do botão */
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #005ce6 0%, #00b8e6 100%);
+    }
+
     @keyframes floating {
       0% {
         transform: translateY(0px);
@@ -105,6 +123,32 @@
 <body class="relative overflow-x-hidden">
   <!-- Particle Background -->
   <div id="particles-js" class="particles-js fixed inset-0 z-0"></div>
+
+  <!-- Navbar Grande com Todos os Cantos Arredondados -->
+  <nav
+    class="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-white/30 backdrop-blur-xl rounded-2xl shadow-lg transition-all border border-white/20 w-[calc(100%-2rem)] max-w-7xl mx-auto">
+    <div class="px-6 sm:px-8 lg:px-10">
+      <div class="flex justify-between items-center h-20 py-2"> <!-- Altura total de h-24 considerando o py-2 -->
+
+        <div class="flex-shrink-0 flex items-center">
+          <a href="#" class="flex items-center">
+            <img src="imagens/logo_nav.png" alt="Lumen Digital" class="h-24 w-auto">
+            <!-- Ajuste a altura conforme necessário -->
+            <!-- Texto opcional ao lado do logo -->
+            <!-- <span class="ml-3 text-2xl font-bold gradient-text hidden md:block">Lumen Digital</span> -->
+          </a>
+        </div>
+
+
+        <div class="ml-6 flex items-center">
+          <a href="#form"
+            class="btn-primary text-white font-semibold py-3 px-8 rounded-xl text-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5">
+            Contrate agora
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
 
   <!-- Main Container -->
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -226,16 +270,11 @@
       </div>
 
       <div class="grid grid-cols-2 md:grid-cols-5 gap-8 items-center px-10">
-        <img src="imagens/aproveweb_auto.png" alt="Logo"
-          class="h-30 opacity-60 hover:opacity-100 transition mx-auto">
-        <img src="imagens/cannara.png" alt="Logo"
-          class="h-30 opacity-60 hover:opacity-100 transition mx-auto">
-        <img src="imagens/zaapix.png" alt="Logo"
-          class="h-30 opacity-60 hover:opacity-100 transition mx-auto">
-        <img src="imagens/faustino.png" alt="Logo"
-          class="h-30 opacity-60 hover:opacity-100 transition mx-auto">
-        <img src="imagens/motor_point.png" alt="Logo"
-          class="h-30 opacity-60 hover:opacity-100 transition mx-auto">
+        <img src="imagens/aproveweb_auto.png" alt="Logo" class="h-30 opacity-60 hover:opacity-100 transition mx-auto">
+        <img src="imagens/cannara.png" alt="Logo" class="h-30 opacity-60 hover:opacity-100 transition mx-auto">
+        <img src="imagens/zaapix.png" alt="Logo" class="h-30 opacity-60 hover:opacity-100 transition mx-auto">
+        <img src="imagens/faustino.png" alt="Logo" class="h-30 opacity-60 hover:opacity-100 transition mx-auto">
+        <img src="imagens/motor_point.png" alt="Logo" class="h-30 opacity-60 hover:opacity-100 transition mx-auto">
       </div>
     </section>
 
@@ -409,7 +448,8 @@
 
                 <div class="mt-10 pt-6 border-t border-blue-400">
                   <div class="flex items-center">
-                    <img src="imagens/enzo.png" alt="Consultor" class="w-12 h-12 rounded-full border-2 border-white mr-4">
+                    <img src="imagens/enzo.png" alt="Consultor"
+                      class="w-12 h-12 rounded-full border-2 border-white mr-4">
                     <div>
                       <h4 class="font-bold">Enzo Willhock</h4>
                       <p class="text-blue-200 text-sm">Diretor Comercial</p>
@@ -655,6 +695,23 @@
       window.addEventListener('scroll', animateOnScroll);
       animateOnScroll(); // Run once on load
     });
+
+
+
+
+
+    // Efeito de navbar ao scroll
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+
+
   </script>
 </body>
 
