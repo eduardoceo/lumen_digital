@@ -17,8 +17,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Particle.js -->
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -35,7 +34,6 @@
       background: #f8fafc;
       color: #1e293b;
       padding-top: 7rem;
-      /* Ajustado para a navbar com margem superior */
     }
 
     .particles-js {
@@ -108,11 +106,9 @@
       0% {
         transform: translateY(0px);
       }
-
       50% {
         transform: translateY(-15px);
       }
-
       100% {
         transform: translateY(0px);
       }
@@ -125,24 +121,17 @@
   <div id="particles-js" class="particles-js fixed inset-0 z-0"></div>
 
   <!-- Navbar Grande com Todos os Cantos Arredondados -->
-  <nav
-    class="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-white/30 backdrop-blur-xl rounded-2xl shadow-lg transition-all border border-white/20 w-[calc(100%-2rem)] max-w-7xl mx-auto">
+  <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-white/30 backdrop-blur-xl rounded-2xl shadow-lg transition-all border border-white/20 w-[calc(100%-2rem)] max-w-7xl mx-auto">
     <div class="px-6 sm:px-8 lg:px-10">
-      <div class="flex justify-between items-center h-20 py-2"> <!-- Altura total de h-24 considerando o py-2 -->
-
+      <div class="flex justify-between items-center h-20 py-2">
         <div class="flex-shrink-0 flex items-center">
           <a href="#" class="flex items-center">
             <img src="imagens/logo_nav.png" alt="Lumen Digital" class="h-24 w-auto">
-            <!-- Ajuste a altura conforme necessário -->
-            <!-- Texto opcional ao lado do logo -->
-            <!-- <span class="ml-3 text-2xl font-bold gradient-text hidden md:block">Lumen Digital</span> -->
           </a>
         </div>
 
-
         <div class="ml-6 flex items-center">
-          <a href="#form"
-            class="btn-primary text-white font-semibold py-3 px-8 rounded-xl text-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5">
+          <a href="#form" class="btn-primary text-white font-semibold py-3 px-8 rounded-xl text-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5">
             Contrate agora
           </a>
         </div>
@@ -152,110 +141,122 @@
 
   <!-- Main Container -->
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Hero Section -->
+    <!-- Hero Section - Modificada -->
     <section class="min-h-screen flex items-center pt-20 pb-32">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <div class="animate__animated animate__fadeInLeft">
-
-
+      <div class="w-full text-center">
+        <div class="max-w-4xl mx-auto">
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
             <span class="gradient-text">Resultados reais</span> com estratégias de marketing digital sob medida
           </h1>
 
-          <p class="text-xl text-slate-600 mb-8 max-w-lg">
-            Na Lumen Digital, criamos campanhas que convertem tráfego em clientes. Tecnologia avançada + criatividade =
-            crescimento exponencial.
+          <p class="text-xl text-slate-600 mb-8 mx-auto max-w-2xl">
+            Na Lumen Digital, criamos campanhas que convertem tráfego em clientes. Tecnologia avançada + criatividade = crescimento exponencial.
           </p>
 
-          <div class="flex flex-wrap gap-4">
+          <div class="flex justify-center gap-4 mb-16">
             <a href="#form" class="btn-primary text-white font-semibold py-4 px-8 rounded-full">
               Quero resultados <i class="fas fa-arrow-right ml-2"></i>
             </a>
-            <a href="#diferenciais"
-              class="border-2 border-lumen-primary text-lumen-primary font-semibold py-4 px-8 rounded-full hover:bg-lumen-primary hover:text-white transition">
+            <a href="#diferenciais" class="border-2 border-lumen-primary text-lumen-primary font-semibold py-4 px-8 rounded-full hover:bg-lumen-primary hover:text-white transition">
               <i class="fas fa-play mr-2"></i> Ver cases
             </a>
           </div>
-
-          <div class="mt-12 flex items-center space-x-4">
-            <div class="flex -space-x-2">
-              <img src="https://randomuser.me/api/portraits/women/44.jpg"
-                class="w-10 h-10 rounded-full border-2 border-white">
-              <img src="https://randomuser.me/api/portraits/men/32.jpg"
-                class="w-10 h-10 rounded-full border-2 border-white">
-              <img src="https://randomuser.me/api/portraits/women/68.jpg"
-                class="w-10 h-10 rounded-full border-2 border-white">
-            </div>
-            <div>
-              <div class="flex items-center">
-                <div class="flex text-yellow-400 mr-2">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                </div>
-                <span class="font-medium">5.0</span>
-              </div>
-              <p class="text-sm text-slate-500">+150 clientes satisfeitos</p>
-            </div>
-          </div>
         </div>
 
-        <div class="animate__animated animate__fadeInRight relative">
-          <div
-            class="absolute -top-10 -left-10 w-64 h-64 bg-blue-100 rounded-full mix-blend-multiply filter blur-xl opacity-70">
-          </div>
-          <div
-            class="absolute -bottom-10 -right-10 w-64 h-64 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-30">
-          </div>
+        <!-- Formulário Grande Centralizado -->
+        <div class="glow-card bg-gradient-to-br from-blue-600 to-blue-800 rounded-3xl p-0.5">
+          <div class="bg-white rounded-[calc(1.5rem-1px)] overflow-hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-2">
+              <!-- Coluna do Formulário -->
+              <div class="p-8 md:p-12">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4">Pronto para <span class="gradient-text">transformar</span> seu negócio?</h2>
+                <p class="text-slate-500 mb-6 md:mb-8">Preencha o formulário e nossa equipe entrará em contato em menos de 24h com uma estratégia personalizada.</p>
 
-          <div class="relative glow-card bg-white p-2 rounded-2xl shadow-xl">
-            <div class="bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl p-6 text-white">
-              <div class="flex justify-between items-center mb-6">
-                <h3 class="text-xl font-bold">Solicite uma Análise Gratuita</h3>
-                <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                  <i class="fas fa-chart-line text-xl"></i>
-                </div>
+                <form class="space-y-6">
+                  <div>
+                    <label for="name" class="block text-sm font-medium text-slate-700 mb-1">Nome completo</label>
+                    <input type="text" id="name" class="form-input w-full px-5 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  </div>
+
+                  <div>
+                    <label for="email" class="block text-sm font-medium text-slate-700 mb-1">Email profissional</label>
+                    <input type="email" id="email" class="form-input w-full px-5 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  </div>
+
+                  <div>
+                    <label for="phone" class="block text-sm font-medium text-slate-700 mb-1">WhatsApp</label>
+                    <input type="tel" id="phone" class="form-input w-full px-5 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  </div>
+
+                  <div>
+                    <label for="business" class="block text-sm font-medium text-slate-700 mb-1">Qual seu faturamento mensal?</label>
+                    <select id="business" class="form-input w-full px-5 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                      <option value="">Selecione</option>
+                      <option value="1">R$ 20.000 - R$ 30.000</option>
+                      <option value="2">R$ 30.000 - R$ 40.000</option>
+                      <option value="3">R$ 40.000 - R$ 50.000</option>
+                      <option value="3">R$ 50.000 - R$ 60.000</option>
+                      <option value="4">Acima de R$ 100.000</option>
+                    </select>
+                  </div>
+
+                  <div class="pt-2">
+                    <button type="submit" class="btn-primary w-full py-4 px-6 rounded-lg font-semibold text-white text-lg">
+                      Quero crescer meu negócio <i class="fas fa-paper-plane ml-2"></i>
+                    </button>
+                  </div>
+                </form>
               </div>
 
-              <form id="hero-form" class="space-y-4">
-                <div>
-                  <input type="text" placeholder="Seu nome"
-                    class="form-input w-full px-5 py-3 rounded-lg bg-white bg-opacity-20 placeholder-white focus:bg-opacity-30 focus:outline-none">
+              <!-- Coluna dos Benefícios - Ajustes de Alinhamento -->
+              <div class="bg-gradient-to-br from-blue-500 to-blue-700 p-8 md:p-12 text-white flex flex-col justify-center">
+                <div class="w-full max-w-sm mx-auto">
+                  <h3 class="text-xl md:text-2xl font-bold mb-6 text-left">O que você ganha com isso?</h3>
+
+                  <ul class="space-y-4 md:space-y-6">
+                    <li class="flex items-start">
+                      <div class="bg-white bg-opacity-20 p-2 rounded-lg mr-3 md:mr-4 flex-shrink-0">
+                        <i class="fas fa-rocket text-lg"></i>
+                      </div>
+                      <div>
+                        <h4 class="font-bold mb-1 text-left">Análise gratuita</h4>
+                        <p class="text-blue-100 text-left">Diagnóstico completo do seu marketing digital</p>
+                      </div>
+                    </li>
+
+                    <li class="flex items-start">
+                      <div class="bg-white bg-opacity-20 p-2 rounded-lg mr-3 md:mr-4 flex-shrink-0">
+                        <i class="fas fa-chart-pie text-lg"></i>
+                      </div>
+                      <div>
+                        <h4 class="font-bold mb-1 text-left">Estratégia personalizada</h4>
+                        <p class="text-blue-100 text-left">Plano de ação com KPIs claros</p>
+                      </div>
+                    </li>
+
+                    <li class="flex items-start">
+                      <div class="bg-white bg-opacity-20 p-2 rounded-lg mr-3 md:mr-4 flex-shrink-0">
+                        <i class="fas fa-gem text-lg"></i>
+                      </div>
+                      <div>
+                        <h4 class="font-bold mb-1 text-left">Bônus exclusivo</h4>
+                        <p class="text-blue-100 text-left">Checklist de otimização para suas campanhas</p>
+                      </div>
+                    </li>
+                  </ul>
+
+                  <div class="mt-8 md:mt-10 pt-6 border-t border-blue-400">
+                    <div class="flex items-center">
+                      <img src="imagens/enzo.png" alt="Consultor" class="w-10 md:w-12 h-10 md:h-12 rounded-full border-2 border-white mr-3 md:mr-4">
+                      <div>
+                        <h4 class="font-bold text-left">Enzo Willhock</h4>
+                        <p class="text-blue-200 text-sm text-left">Diretor Comercial</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <input type="email" placeholder="Seu melhor email"
-                    class="form-input w-full px-5 py-3 rounded-lg bg-white bg-opacity-20 placeholder-white focus:bg-opacity-30 focus:outline-none">
-                </div>
-                <div>
-                  <input type="tel" placeholder="WhatsApp"
-                    class="form-input w-full px-5 py-3 rounded-lg bg-white bg-opacity-20 placeholder-white focus:bg-opacity-30 focus:outline-none">
-                </div>
-                <button type="submit" class="btn-primary w-full py-3 px-6 rounded-lg font-semibold text-white">
-                  Quero minha análise <i class="fas fa-arrow-right ml-2"></i>
-                </button>
-              </form>
+              </div>
             </div>
-
-            <div class="p-6">
-              <div class="flex items-start mb-4">
-                <div class="bg-blue-100 p-2 rounded-lg mr-4">
-                  <i class="fas fa-check text-blue-600"></i>
-                </div>
-                <p class="text-slate-600">Diagnóstico completo do seu funil de vendas</p>
-              </div>
-              <div class="flex items-start">
-                <div class="bg-blue-100 p-2 rounded-lg mr-4">
-                  <i class="fas fa-check text-blue-600"></i>
-                </div>
-                <p class="text-slate-600">Estratégia personalizada em 24h</p>
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="absolute -bottom-8 -right-8 w-32 h-32 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse">
           </div>
         </div>
       </div>
@@ -265,8 +266,7 @@
     <section class="py-16 bg-white bg-opacity-50 backdrop-blur-sm rounded-3xl mb-20">
       <div class="text-center mb-12">
         <h3 class="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-2">Parceiros e clientes</h3>
-        <p class="text-slate-500 max-w-2xl mx-auto">Empresas que confiam na Lumen Digital para escalar seus resultados
-        </p>
+        <p class="text-slate-500 max-w-2xl mx-auto">Empresas que confiam na Lumen Digital para escalar seus resultados</p>
       </div>
 
       <div class="grid grid-cols-2 md:grid-cols-5 gap-8 items-center px-10">
@@ -281,16 +281,13 @@
     <!-- Diferenciais -->
     <section id="diferenciais" class="py-20">
       <div class="text-center mb-20">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">Por que escolher a <span class="gradient-text">Lumen
-            Digital</span></h2>
-        <p class="text-slate-500 max-w-2xl mx-auto">Tecnologia avançada + estratégia comprovada = crescimento acelerado
-        </p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Por que escolher a <span class="gradient-text">Lumen Digital</span></h2>
+        <p class="text-slate-500 max-w-2xl mx-auto">Tecnologia avançada + estratégia comprovada = crescimento acelerado</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- Diferencial 1 -->
-        <div
-          class="glow-card bg-white p-8 rounded-xl hover:border-lumen-primary transition-all duration-300 border border-transparent">
+        <div class="glow-card bg-white p-8 rounded-xl hover:border-lumen-primary transition-all duration-300 border border-transparent">
           <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 mb-6">
             <i class="fas fa-bolt text-2xl"></i>
           </div>
@@ -311,8 +308,7 @@
         </div>
 
         <!-- Diferencial 2 -->
-        <div
-          class="glow-card bg-white p-8 rounded-xl hover:border-lumen-primary transition-all duration-300 border border-transparent">
+        <div class="glow-card bg-white p-8 rounded-xl hover:border-lumen-primary transition-all duration-300 border border-transparent">
           <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 mb-6">
             <i class="fas fa-chart-line text-2xl"></i>
           </div>
@@ -333,8 +329,7 @@
         </div>
 
         <!-- Diferencial 3 -->
-        <div
-          class="glow-card bg-white p-8 rounded-xl hover:border-lumen-primary transition-all duration-300 border border-transparent">
+        <div class="glow-card bg-white p-8 rounded-xl hover:border-lumen-primary transition-all duration-300 border border-transparent">
           <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 mb-6">
             <i class="fas fa-headset text-2xl"></i>
           </div>
@@ -355,113 +350,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Form Section -->
-    <section id="form" class="py-20 relative">
-      <div class="absolute -top-20 left-0 w-full h-20 bg-gradient-to-b from-transparent to-white"></div>
-
-      <div class="glow-card bg-gradient-to-br from-blue-600 to-blue-800 rounded-3xl p-0.5">
-        <div class="bg-white rounded-[calc(1.5rem-1px)] overflow-hidden">
-          <div class="grid grid-cols-1 lg:grid-cols-2">
-            <div class="p-12">
-              <h2 class="text-3xl font-bold mb-4">Pronto para <span class="gradient-text">transformar</span> seu
-                negócio?</h2>
-              <p class="text-slate-500 mb-8">Preencha o formulário e nossa equipe entrará em contato em menos de 24h com
-                uma estratégia personalizada.</p>
-
-              <form class="space-y-6">
-                <div>
-                  <label for="name" class="block text-sm font-medium text-slate-700 mb-1">Nome completo</label>
-                  <input type="text" id="name"
-                    class="form-input w-full px-5 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                </div>
-
-                <div>
-                  <label for="email" class="block text-sm font-medium text-slate-700 mb-1">Email profissional</label>
-                  <input type="email" id="email"
-                    class="form-input w-full px-5 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                </div>
-
-                <div>
-                  <label for="phone" class="block text-sm font-medium text-slate-700 mb-1">WhatsApp</label>
-                  <input type="tel" id="phone"
-                    class="form-input w-full px-5 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                </div>
-
-                <div>
-                  <label for="business" class="block text-sm font-medium text-slate-700 mb-1">Qual seu faturamento
-                    mensal?</label>
-                  <select id="business"
-                    class="form-input w-full px-5 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <option value="">Selecione</option>
-                    <option value="1">Até R$ 10.000</option>
-                    <option value="2">R$ 10.000 - R$ 50.000</option>
-                    <option value="3">R$ 50.000 - R$ 200.000</option>
-                    <option value="4">Acima de R$ 200.000</option>
-                  </select>
-                </div>
-
-                <div class="pt-2">
-                  <button type="submit"
-                    class="btn-primary w-full py-4 px-6 rounded-lg font-semibold text-white text-lg">
-                    Quero crescer meu negócio <i class="fas fa-paper-plane ml-2"></i>
-                  </button>
-                </div>
-              </form>
-            </div>
-
-            <div class="bg-gradient-to-br from-blue-500 to-blue-700 p-12 text-white flex flex-col justify-center">
-              <div class="max-w-sm mx-auto">
-                <h3 class="text-2xl font-bold mb-6">O que você ganha com isso?</h3>
-
-                <ul class="space-y-6">
-                  <li class="flex items-start">
-                    <div class="bg-white bg-opacity-20 p-2 rounded-lg mr-4">
-                      <i class="fas fa-rocket text-lg"></i>
-                    </div>
-                    <div>
-                      <h4 class="font-bold mb-1">Análise gratuita</h4>
-                      <p class="text-blue-100">Diagnóstico completo do seu marketing digital</p>
-                    </div>
-                  </li>
-
-                  <li class="flex items-start">
-                    <div class="bg-white bg-opacity-20 p-2 rounded-lg mr-4">
-                      <i class="fas fa-chart-pie text-lg"></i>
-                    </div>
-                    <div>
-                      <h4 class="font-bold mb-1">Estratégia personalizada</h4>
-                      <p class="text-blue-100">Plano de ação com KPIs claros</p>
-                    </div>
-                  </li>
-
-                  <li class="flex items-start">
-                    <div class="bg-white bg-opacity-20 p-2 rounded-lg mr-4">
-                      <i class="fas fa-gem text-lg"></i>
-                    </div>
-                    <div>
-                      <h4 class="font-bold mb-1">Bônus exclusivo</h4>
-                      <p class="text-blue-100">Checklist de otimização para suas campanhas</p>
-                    </div>
-                  </li>
-                </ul>
-
-                <div class="mt-10 pt-6 border-t border-blue-400">
-                  <div class="flex items-center">
-                    <img src="imagens/enzo.png" alt="Consultor"
-                      class="w-12 h-12 rounded-full border-2 border-white mr-4">
-                    <div>
-                      <h4 class="font-bold">Enzo Willhock</h4>
-                      <p class="text-blue-200 text-sm">Diretor Comercial</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
   </div>
 
   <!-- Footer -->
@@ -470,17 +358,14 @@
       <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
         <div>
           <a href="#" class="inline-block mb-4">
-            <!-- Logo ajustada com tamanho responsivo -->
             <img src="imagens/logo.png" alt="Lumen Digital" class="h-133=0 w-auto max-w-[180px]">
           </a>
           <p class="text-slate-400 mb-6">Tecnologia e criatividade para impulsionar seu negócio no digital.</p>
           <div class="flex space-x-4">
-            <a href="#"
-              class="w-10 h-10 bg-slate-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition">
+            <a href="#" class="w-10 h-10 bg-slate-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition">
               <i class="fab fa-instagram"></i>
             </a>
-            <a href="#"
-              class="w-10 h-10 bg-slate-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition">
+            <a href="#" class="w-10 h-10 bg-slate-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition">
               <i class="fab fa-linkedin-in"></i>
             </a>
           </div>
@@ -535,8 +420,7 @@
   </footer>
 
   <!-- Floating WhatsApp -->
-  <a href="#"
-    class="fixed bottom-8 right-8 w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center shadow-xl hover:shadow-2xl transition-all z-50">
+  <a href="#" class="fixed bottom-8 right-8 w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center shadow-xl hover:shadow-2xl transition-all z-50">
     <i class="fab fa-whatsapp text-2xl"></i>
   </a>
 
@@ -671,7 +555,7 @@
               submitBtn.innerHTML = originalText;
               submitBtn.disabled = false;
 
-              // Show success message (you can customize this)
+              // Show success message
               alert('Obrigado! Nossa equipe entrará em contato em breve.');
             }, 1500);
           }, 2000);
@@ -696,10 +580,6 @@
       animateOnScroll(); // Run once on load
     });
 
-
-
-
-
     // Efeito de navbar ao scroll
     const nav = document.querySelector('nav');
     window.addEventListener('scroll', () => {
@@ -709,10 +589,6 @@
         nav.classList.remove('scrolled');
       }
     });
-
-
-
   </script>
 </body>
-
 </html>
