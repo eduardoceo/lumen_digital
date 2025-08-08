@@ -32,7 +32,7 @@
     }
 
     html {
-       scroll-behavior: smooth;
+      scroll-behavior: smooth;
     }
 
     body {
@@ -164,6 +164,20 @@
     .animate-scroll {
       animation: scroll 50s linear infinite;
       display: flex;
+    }
+
+    .scrolling-logos:hover .animate-scroll {
+      animation-play-state: paused;
+    }
+
+    /* Versão mais rápida para mobile */
+    @media (max-width: 768px) {
+
+      /* ou o breakpoint que você usa para mobile */
+      .animate-scroll {
+        animation-duration: 20s;
+        /* 40% mais rápido que os 50s original */
+      }
     }
 
     .scrolling-logos:hover .animate-scroll {
@@ -745,17 +759,17 @@
       animateOnScroll(); // Run once on load
     });
 
-   
-  function scrollToForm() {
-    const form = document.getElementById('form_principal');
-    const navbarHeight = document.querySelector('nav').offsetHeight;
-    const offset = form.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 20;
-    
-    window.scrollTo({
-      top: offset,
-      behavior: 'smooth'
-    });
-  }
+
+    function scrollToForm() {
+      const form = document.getElementById('form_principal');
+      const navbarHeight = document.querySelector('nav').offsetHeight;
+      const offset = form.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 20;
+
+      window.scrollTo({
+        top: offset,
+        behavior: 'smooth'
+      });
+    }
 
     // Efeito de navbar ao scroll
     const nav = document.querySelector('nav');
