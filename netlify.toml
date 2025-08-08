@@ -2,33 +2,35 @@
   publish = "."
 
 [forms]
+  # Configuração obrigatória para o honeypot
   [forms.honeypot]
     field_name = "bot-field"
 
+  # Notificação para o formulário "contact"
   [[forms.notifications]]
-    for = "contact"
-    subject = "📢 Novo Lead: {{name}}"
+    for = "contact"  # Deve bater com name="contact" no HTML
+    subject = "🚀 Novo Lead Lumen: {{name}}"
     from = "comercial@assessorialumen.com.br"
-    to = "comercial@assessorialumen.com.br" # SUBSTITUA pelo seu email REAL
+    to = "comercial@assessorialumen.com.br"  # Confirme o e-mail
 
+    # Template do e-mail (HTML simplificado garantido)
     [forms.notifications.email]
       html_body = """
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e5e7eb;">
-        <div style="background: #2563eb; padding: 15px; text-align: center;">
-          <h2 style="color: white; margin: 0;">NOVO LEAD - LUMEN</h2>
+        <div style="background: #2563eb; padding: 15px; text-align: center; color: white;">
+          <h2>NOVO LEAD RECEBIDO - LUMEN</h2>
         </div>
         
-        <div style="padding: 20px;">
-          <table style="width: 100%; border-collapse: collapse;">
-            <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee; font-weight: bold; width: 150px;">Nome:</td><td style="padding: 8px 0; border-bottom: 1px solid #eee;">{{name}}</td></tr>
-            <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee; font-weight: bold;">WhatsApp:</td><td style="padding: 8px 0; border-bottom: 1px solid #eee;">{{phone}}</td></tr>
-            <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee; font-weight: bold;">Faturamento:</td><td style="padding: 8px 0; border-bottom: 1px solid #eee;">{{business}}</td></tr>
-          </table>
+        <div style="padding: 20px; background: #f9fafb;">
+          <p><strong>Nome:</strong> {{name}}</p>
+          <p><strong>WhatsApp:</strong> {{phone}}</p>
+          <p><strong>Faturamento:</strong> {{business}}</p>
+          <p><strong>Data:</strong> {{submission_time}}</p>
           
-          <div style="margin-top: 25px; text-align: center;">
+          <div style="text-align: center; margin-top: 20px;">
             <a href="https://wa.me/55{{phone | replace: '+', '' | replace: ' ', '' | replace: '-', '' | replace: '(', '' | replace: ')', ''}}?text=Olá {{name}}, vim pelo site Lumen!" 
-               style="background: #25D366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; display: inline-block; font-weight: bold;">
-              ➤ WhatsApp Direto
+               style="background: #25D366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; font-weight: bold;">
+              📱 WhatsApp Direto
             </a>
           </div>
         </div>

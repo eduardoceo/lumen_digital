@@ -774,18 +774,21 @@
     }
 
 
-    document.querySelector('form[name="contact"]').addEventListener('submit', function(e) {
-      e.preventDefault();
-      console.log('Dados do formulário:', 
-        Object.fromEntries(new FormData(e.target)));
-      
-      // Envio real (opcional)
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(new FormData(e.target))
-      }).then(res => console.log('Resposta:', res.status));
+    document.querySelector('form[name="contact"]').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const data = new URLSearchParams(new FormData(form)).toString();
+    
+    console.log("Dados enviados:", Array.from(new FormData(form)));
+    
+    const response = await fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: data
     });
+    
+    console.log("Resposta:", response.status, await response.text());
+  });
 
     <!-- Adicione este script antes do </body> para debug -->
 
