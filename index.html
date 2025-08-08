@@ -129,15 +129,6 @@
       animation: scroll 30s linear infinite;
     }
 
-    @keyframes scroll {
-      0% {
-        transform: translateX(0);
-      }
-
-      100% {
-        transform: translateX(-50%);
-      }
-    }
 
     /* Apenas o estilo ESSENCIAL para a animação */
     .scrolling-logos {
@@ -146,14 +137,33 @@
       /* Espaço vertical */
     }
 
+    /* Espaço para a navbar fixa */
+    #form_principal {
+      scroll-margin-top: 6rem;
+      /* Ajuste conforme a altura da sua navbar */
+      padding-top: 2rem;
+      /* Espaço extra */
+      margin-top: -2rem;
+      /* Compensa o padding */
+    }
+
     @keyframes scroll {
       0% {
         transform: translateX(0);
       }
 
       100% {
-        transform: translateX(-50%);
+        transform: translateX(-100%);
       }
+    }
+
+    .animate-scroll {
+      animation: scroll 50s linear infinite;
+      display: flex;
+    }
+
+    .scrolling-logos:hover .animate-scroll {
+      animation-play-state: paused;
     }
   </style>
 </head>
@@ -175,7 +185,8 @@
 
         <div class="ml-6 flex items-center">
           <a href="#form_principal"
-            class="btn-primary text-white font-semibold py-3 px-8 rounded-xl text-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5">
+            class="btn-primary text-white font-semibold py-3 px-8 rounded-xl text-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5"
+            onclick="scrollToForm()">
             Contrate agora
           </a>
         </div>
@@ -200,7 +211,8 @@
           </p>
 
           <div class="flex justify-center gap-4 mb-16">
-            <a href="#form_principal" class="btn-primary text-white font-semibold py-4 px-8 rounded-full">
+            <a href="#form_principal" class="btn-primary text-white font-semibold py-4 px-8 rounded-full"
+              onclick="scrollToForm()">
               Agende já uma reunião <i class="fas fa-arrow-right ml-2"></i>
             </a>
             <a href="#diferenciais"
@@ -328,46 +340,51 @@
 
       <div class="relative">
         <div class="scrolling-logos-container overflow-hidden">
-          <div class="scrolling-logos flex items-center animate-scroll whitespace-nowrap">
-            <!-- Logos com tamanho aumentado via Tailwind -->
-            <img src="imagens/aproveweb_auto.png" alt="Logo"
-              class="h-[180px] w-auto min-w-[200px] object-contain mx-10 hover:scale-105 transition-all">
-            <img src="imagens/cannara.png" alt="Logo"
-              class="h-[180px] w-auto min-w-[200px] object-contain mx-10 hover:scale-105 transition-all">
-            <img src="imagens/zaapix.png" alt="Logo"
-              class="h-[180px] w-auto min-w-[200px] object-contain mx-10 hover:scale-105 transition-all">
-            <img src="imagens/faustino.png" alt="Logo"
-              class="h-[180px] w-auto min-w-[200px] object-contain mx-10 hover:scale-105 transition-all">
-            <img src="imagens/amigao_multimarcas.png" alt="Logo"
-              class="h-[180px] w-auto min-w-[200px] object-contain mx-10 hover:scale-105 transition-all">
-            <img src="imagens/motor_point.png" alt="Logo"
-              class="h-[180px] w-auto min-w-[200px] object-contain mx-10 hover:scale-105 transition-all">
-            <img src="imagens/auto_veloz.png" alt="Logo"
-              class="h-[180px] w-auto min-w-[200px] object-contain mx-10 hover:scale-105 transition-all">
-            <img src="imagens/tauros.png" alt="Logo"
-              class="h-[180px] w-auto min-w-[200px] object-contain mx-10 hover:scale-105 transition-all">
+          <div class="scrolling-logos flex items-center">
+            <!-- Primeira cópia -->
+            <div class="flex items-center animate-scroll">
+              <img src="imagens/aproveweb_auto.png" alt="Logo"
+                class="h-[180px] w-auto min-w-[200px] object-contain mx-10 hover:scale-105 transition-all">
+              <img src="imagens/cannara.png" alt="Logo"
+                class="h-[180px] w-auto min-w-[200px] object-contain mx-10 hover:scale-105 transition-all">
+              <img src="imagens/zaapix.png" alt="Logo"
+                class="h-[180px] w-auto min-w-[200px] object-contain mx-10 hover:scale-105 transition-all">
+              <img src="imagens/faustino.png" alt="Logo"
+                class="h-[180px] w-auto min-w-[200px] object-contain mx-10 hover:scale-105 transition-all">
+              <img src="imagens/amigao_multimarcas.png" alt="Logo"
+                class="h-[180px] w-auto min-w-[200px] object-contain mx-10 hover:scale-105 transition-all">
+              <img src="imagens/motor_point.png" alt="Logo"
+                class="h-[180px] w-auto min-w-[200px] object-contain mx-10 hover:scale-105 transition-all">
+              <img src="imagens/auto_veloz.png" alt="Logo"
+                class="h-[180px] w-auto min-w-[200px] object-contain mx-10 hover:scale-105 transition-all">
+              <img src="imagens/tauros.png" alt="Logo"
+                class="h-[180px] w-auto min-w-[200px] object-contain mx-10 hover:scale-105 transition-all">
+            </div>
 
-            <!-- Duplicado para loop -->
-            <img src="imagens/aproveweb_auto.png" alt="Logo"
-              class="h-[180px] w-auto min-w-[200px] object-contain mx-10 hover:scale-105 transition-all">
-            <img src="imagens/cannara.png" alt="Logo"
-              class="h-[180px] w-auto min-w-[200px] object-contain mx-10 hover:scale-105 transition-all">
-            <img src="imagens/zaapix.png" alt="Logo"
-              class="h-[180px] w-auto min-w-[200px] object-contain mx-10 hover:scale-105 transition-all">
-            <img src="imagens/faustino.png" alt="Logo"
-              class="h-[180px] w-auto min-w-[200px] object-contain mx-10 hover:scale-105 transition-all">
-            <img src="imagens/amigao_multimarcas.png" alt="Logo"
-              class="h-[180px] w-auto min-w-[200px] object-contain mx-10 hover:scale-105 transition-all">
-            <img src="imagens/motor_point.png" alt="Logo"
-              class="h-[180px] w-auto min-w-[200px] object-contain mx-10 hover:scale-105 transition-all">
-            <img src="imagens/auto_veloz.png" alt="Logo"
-              class="h-[180px] w-auto min-w-[200px] object-contain mx-10 hover:scale-105 transition-all">
-            <img src="imagens/tauros.png" alt="Logo"
-              class="h-[180px] w-auto min-w-[200px] object-contain mx-10 hover:scale-105 transition-all">
+            <!-- Segunda cópia (idêntica) para o efeito contínuo -->
+            <div class="flex items-center animate-scroll" aria-hidden="true">
+              <img src="imagens/aproveweb_auto.png" alt="Logo"
+                class="h-[180px] w-auto min-w-[200px] object-contain mx-10 hover:scale-105 transition-all">
+              <img src="imagens/cannara.png" alt="Logo"
+                class="h-[180px] w-auto min-w-[200px] object-contain mx-10 hover:scale-105 transition-all">
+              <img src="imagens/zaapix.png" alt="Logo"
+                class="h-[180px] w-auto min-w-[200px] object-contain mx-10 hover:scale-105 transition-all">
+              <img src="imagens/faustino.png" alt="Logo"
+                class="h-[180px] w-auto min-w-[200px] object-contain mx-10 hover:scale-105 transition-all">
+              <img src="imagens/amigao_multimarcas.png" alt="Logo"
+                class="h-[180px] w-auto min-w-[200px] object-contain mx-10 hover:scale-105 transition-all">
+              <img src="imagens/motor_point.png" alt="Logo"
+                class="h-[180px] w-auto min-w-[200px] object-contain mx-10 hover:scale-105 transition-all">
+              <img src="imagens/auto_veloz.png" alt="Logo"
+                class="h-[180px] w-auto min-w-[200px] object-contain mx-10 hover:scale-105 transition-all">
+              <img src="imagens/tauros.png" alt="Logo"
+                class="h-[180px] w-auto min-w-[200px] object-contain mx-10 hover:scale-105 transition-all">
+            </div>
           </div>
         </div>
       </div>
     </section>
+
 
 
     <!-- Diferenciais -->
@@ -723,6 +740,18 @@
       window.addEventListener('scroll', animateOnScroll);
       animateOnScroll(); // Run once on load
     });
+
+   
+  function scrollToForm() {
+    const form = document.getElementById('form_principal');
+    const navbarHeight = document.querySelector('nav').offsetHeight;
+    const offset = form.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 20;
+    
+    window.scrollTo({
+      top: offset,
+      behavior: 'smooth'
+    });
+  }
 
     // Efeito de navbar ao scroll
     const nav = document.querySelector('nav');
