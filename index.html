@@ -180,11 +180,14 @@
         /* 40% mais rápido que os 50s original */
       }
 
-      .scrolling-logos img {
-        min-w-[1px] !important;
-        /* Largura menor em mobile */
-        mx-1 !important;
-        /* Espaçamento menor entre logos */
+      @media (max-width: 768px) {
+        .scrolling-logos img {
+          min-width: 150px !important;
+          /* Valor mais razoável */
+          margin-left: 0.40rem !important;
+          /* mx-1 equivalente */
+          margin-right: 0.40rem !important;
+        }
       }
     }
 
@@ -295,7 +298,7 @@
                   <div class="pt-2">
                     <button type="submit"
                       class="btn-primary w-full py-4 px-6 rounded-lg font-semibold text-white text-lg">
-                      Quero crescer meu negócio <i class="fas fa-paper-plane ml-2"></i>
+                      Quero escalar meu negócio <i class="fas fa-paper-plane ml-2"></i>
                     </button>
                   </div>
                 </form>
