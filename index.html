@@ -757,6 +757,17 @@
       });
     });
 
+     document.querySelector('form')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const response = await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString()
+    });
+    console.log('Form submission response:', response);
+  });
+
 
     function scrollToForm() {
       const form = document.getElementById('form_principal');
