@@ -769,6 +769,22 @@
       });
     }
 
+
+
+    <!-- Adicione este script antes do </body> para debug -->
+
+  document.querySelector('form')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const response = await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString()
+    });
+    console.log('Form submission response:', response);
+  });
+
+
     // Efeito de navbar ao scroll
     const nav = document.querySelector('nav');
     window.addEventListener('scroll', () => {
