@@ -161,6 +161,7 @@
       }
     }
 
+
     .animate-scroll {
       animation: scroll 50s linear infinite;
       display: flex;
@@ -177,6 +178,13 @@
       .animate-scroll {
         animation-duration: 20s;
         /* 40% mais rápido que os 50s original */
+      }
+
+      .scrolling-logos img {
+        min-w-[1px] !important;
+        /* Largura menor em mobile */
+        mx-1 !important;
+        /* Espaçamento menor entre logos */
       }
     }
 
