@@ -196,7 +196,11 @@
       animation-play-state: paused;
     }
   </style>
+
+  
 </head>
+
+
 
 <body class="relative overflow-x-hidden">
   <!-- Particle Background -->
@@ -770,6 +774,18 @@
     }
 
 
+    document.querySelector('form[name="contact"]').addEventListener('submit', function(e) {
+      e.preventDefault();
+      console.log('Dados do formulário:', 
+        Object.fromEntries(new FormData(e.target)));
+      
+      // Envio real (opcional)
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(e.target))
+      }).then(res => console.log('Resposta:', res.status));
+    });
 
     <!-- Adicione este script antes do </body> para debug -->
 
@@ -783,6 +799,10 @@
     });
     console.log('Form submission response:', response);
   });
+
+
+  
+
 
 
     // Efeito de navbar ao scroll
