@@ -773,33 +773,31 @@
       console.log('Form submission response:', response);
     });
 
-    document.addEventListener('DOMContentLoaded', function () {
-      const form = document.getElementById('meuFormulario');
+    document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('meuFormulario'); // Certifique-se de que o formulário tem ID
 
-      form.addEventListener('submit', function (e) {
-        e.preventDefault(); // Impede o envio padrão
+  form.addEventListener('submit', function(e) {
+    e.preventDefault(); // Impede o envio automático
 
-        // 1️⃣ Dispara o Pixel do Facebook
-        fbq('track', 'Contact');
-
-        // 2️⃣ Prepara os dados para o Netlify
-        const formData = new FormData(form);
-        const encodedData = new URLSearchParams(formData).toString();
-
-        // 3️⃣ Envia para o Netlify via Fetch
-        fetch('/', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          },
-          body: encodedData
-        })
-          .catch((error) => {
-            console.error('Erro:', error);
-            alert('Ocorreu um erro. Tente novamente.');
-          });
+    // Dispara o evento do Facebook Pixel
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'Contact', {
+        content_name: 'Formulário de Contato', // Parâmetros opcionais
+        content_category: 'Lead'
       });
-    });
+    }
+
+    // Envia os dados para o Netlify (mantenha seu código de fetch aqui)
+    const formData = new FormData(form);
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData)
+    })
+    .then(() => window.location.href = '/obrigado') // Redireciona após o envio
+    .catch(() => alert('Erro ao enviar. Tente novamente.'));
+  });
+});
 
 
 
