@@ -794,10 +794,6 @@
           },
           body: encodedData
         })
-          .then(() => {
-            // 4️⃣ Redireciona após sucesso (opcional)
-            window.location.href = '/obrigado'; // Página de confirmação
-          })
           .catch((error) => {
             console.error('Erro:', error);
             alert('Ocorreu um erro. Tente novamente.');
