@@ -7,14 +7,16 @@
   <title>Lumen Digital - Transforme Seu Tráfego em Clientes</title>
   <link rel="icon" href="imagens/logo.png" type="image/png">
   <meta name="description" content="Solução completa em marketing digital para escalar seu negócio">
+
   <!-- Tailwind + Animate.css -->
   <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+
   <!-- Meta Pixel Code -->
   <script>
     !function (f, b, e, v, n, t, s) {
       if (f.fbq) return; n = f.fbq = function () {
         n.callMethod ?
-          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
       };
       if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
       n.queue = []; t = b.createElement(e); t.async = !0;
@@ -28,15 +30,20 @@
   <noscript><img height="1" width="1" style="display:none"
       src="https://www.facebook.com/tr?id=787675047108238&ev=PageView&noscript=1" /></noscript>
   <!-- End Meta Pixel Code -->
+
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet">
+
   <!-- Particle.js -->
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
   <style>
     /* Your existing styles */
     :root {
@@ -276,7 +283,7 @@
                 <p class="text-slate-500 mb-6 md:mb-8">Preencha o formulário e nossa equipe entrará em contato em menos
                   de 24h com uma estratégia personalizada.</p>
 
-                <form id="meuFormulario" name="contact" method="POST" netlify class="space-y-6" onsubmit="return false">
+                <form name="contact" method="POST" netlify class="space-y-6">
                   <!-- Campo OBRIGATÓRIO para Netlify -->
                   <input type="hidden" name="form-name" value="contact">
 
@@ -318,7 +325,7 @@
                   </div>
 
                   <div class="pt-2">
-                    <button type="submit"
+                    <button type="submit" id="contactButton" 
                       class="btn-primary w-full py-4 px-6 rounded-lg font-semibold text-white text-lg">
                       Quero escalar meu negócio <i class="fas fa-paper-plane ml-2"></i>
                     </button>
@@ -530,7 +537,15 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           <!-- Depoimento 1 - Versão limpa -->
-
+          <div class="bg-white rounded-xl shadow-md overflow-hidden">
+            <div class="relative pt-[150%]"> <!-- Mantém proporção vertical -->
+              <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/SEU_ID_VIDEO_1"
+                title="Depoimento Cliente 1" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
 
           <!-- Depoimento 2 - Versão limpa -->
           <div class="bg-white rounded-xl shadow-md overflow-hidden">
@@ -773,32 +788,15 @@
       console.log('Form submission response:', response);
     });
 
-    document.addEventListener('DOMContentLoaded', function() {
-  const form = document.getElementById('meuFormulario'); // Certifique-se de que o formulário tem ID
+      document.getElementById('contactForm').addEventListener('submit', function (event) {
+    // Dispara o evento do Meta Pixel
+    fbq('track', 'Contact');
 
-  form.addEventListener('submit', function(e) {
-    e.preventDefault(); // Impede o envio automático
-
-    // Dispara o evento do Facebook Pixel
-    if (typeof fbq !== 'undefined') {
-      fbq('track', 'Contact', {
-        content_name: 'Formulário de Contato', // Parâmetros opcionais
-        content_category: 'Lead'
-      });
-    }
-
-    // Envia os dados para o Netlify (mantenha seu código de fetch aqui)
-    const formData = new FormData(form);
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(formData)
-    })
-    .then(() => window.location.href = '/obrigado') // Redireciona após o envio
-    .catch(() => alert('Erro ao enviar. Tente novamente.'));
+    // Pequeno atraso para garantir que o evento seja enviado antes do Netlify processar
+    setTimeout(function () {
+      event.target.submit(); // prossegue com o envio
+    }, 200);
   });
-});
-
 
 
     function scrollToForm() {
