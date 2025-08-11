@@ -11,6 +11,26 @@
   <!-- Tailwind + Animate.css -->
   <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
 
+  <!-- Meta Pixel Code -->
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '787675047108238');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=787675047108238&ev=PageView&noscript=1" /></noscript>
+  <!-- End Meta Pixel Code -->
+
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -305,7 +325,7 @@
                   </div>
 
                   <div class="pt-2">
-                    <button type="submit"
+                    <button type="submit" id="contactButton" 
                       class="btn-primary w-full py-4 px-6 rounded-lg font-semibold text-white text-lg">
                       Quero escalar meu negócio <i class="fas fa-paper-plane ml-2"></i>
                     </button>
@@ -757,15 +777,25 @@
       });
     });
 
-     document.querySelector('form')?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const response = await fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(new FormData(form)).toString()
+    document.querySelector('form')?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      });
+      console.log('Form submission response:', response);
     });
-    console.log('Form submission response:', response);
+
+      document.getElementById('contactForm').addEventListener('submit', function (event) {
+    // Dispara o evento do Meta Pixel
+    fbq('track', 'Contact');
+
+    // Pequeno atraso para garantir que o evento seja enviado antes do Netlify processar
+    setTimeout(function () {
+      event.target.submit(); // prossegue com o envio
+    }, 200);
   });
 
 
