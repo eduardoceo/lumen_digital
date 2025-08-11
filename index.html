@@ -14,7 +14,7 @@
     !function (f, b, e, v, n, t, s) {
       if (f.fbq) return; n = f.fbq = function () {
         n.callMethod ?
-        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
       };
       if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
       n.queue = []; t = b.createElement(e); t.async = !0;
@@ -276,7 +276,7 @@
                 <p class="text-slate-500 mb-6 md:mb-8">Preencha o formulário e nossa equipe entrará em contato em menos
                   de 24h com uma estratégia personalizada.</p>
 
-                <form name="contact" method="POST" netlify class="space-y-6">
+                <form id="meuFormulario" name="contact" method="POST" netlify class="space-y-6" onsubmit="return false">
                   <!-- Campo OBRIGATÓRIO para Netlify -->
                   <input type="hidden" name="form-name" value="contact">
 
@@ -772,6 +772,39 @@
       });
       console.log('Form submission response:', response);
     });
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.getElementById('meuFormulario');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault(); // Impede o envio padrão
+
+        // 1️⃣ Dispara o Pixel do Facebook
+        fbq('track', 'Contact');
+
+        // 2️⃣ Prepara os dados para o Netlify
+        const formData = new FormData(form);
+        const encodedData = new URLSearchParams(formData).toString();
+
+        // 3️⃣ Envia para o Netlify via Fetch
+        fetch('/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          body: encodedData
+        })
+          .then(() => {
+            // 4️⃣ Redireciona após sucesso (opcional)
+            window.location.href = '/obrigado'; // Página de confirmação
+          })
+          .catch((error) => {
+            console.error('Erro:', error);
+            alert('Ocorreu um erro. Tente novamente.');
+          });
+      });
+    });
+
 
 
     function scrollToForm() {
