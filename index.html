@@ -747,73 +747,73 @@
         "retina_detect": true
       });
 
-      document.addEventListener('DOMContentLoaded', () => {
-        const forms = document.querySelectorAll('form');
+    });
 
-        forms.forEach(form => {
-          form.addEventListener('submit', async function (e) {
-            e.preventDefault();
 
-            // Verifica se o Meta Pixel (fbq) está definido
-            if (typeof fbq === 'function') {
-              fbq('track', 'Contact');
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const forms = document.querySelectorAll('form');
+
+      forms.forEach(form => {
+        form.addEventListener('submit', async function (e) {
+          e.preventDefault(); // impede redirecionamento
+
+          // Dispara o evento do Meta Pixel
+          fbq('track', 'Contact');
+
+          // Botão de envio
+          const submitBtn = this.querySelector('button[type="submit"]');
+          const originalText = submitBtn.innerHTML;
+
+          // Mostra carregando
+          submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+          submitBtn.disabled = true;
+
+          try {
+            // Envia via fetch para Netlify
+            const response = await fetch('/', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+              body: new URLSearchParams(new FormData(this)).toString()
+            });
+
+            if (response.ok) {
+              // Mostra sucesso
+              submitBtn.innerHTML = '<i class="fas fa-check"></i> Enviado!';
+              setTimeout(() => {
+                form.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                alert('Obrigado! Nossa equipe entrará em contato em breve.');
+              }, 1500);
+            } else {
+              throw new Error('Falha no envio do formulário.');
             }
-
-            const submitBtn = this.querySelector('button[type="submit"]');
-            if (!submitBtn) return; // Se não houver botão, interrompe
-
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-            submitBtn.disabled = true;
-
-            try {
-              const response = await fetch('/', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams(new FormData(this)).toString()
-              });
-
-              if (response.ok) {
-                submitBtn.innerHTML = '<i class="fas fa-check"></i> Enviado!';
-                setTimeout(() => {
-                  form.reset();
-                  submitBtn.innerHTML = originalText;
-                  submitBtn.disabled = false;
-                  alert('Obrigado! Nossa equipe entrará em contato em breve.');
-                }, 1500);
-              } else {
-                throw new Error(`Erro HTTP: ${response.status}`);
-              }
-            } catch (error) {
-              console.error('Erro:', error);
-              alert('Erro ao enviar. Tente novamente.');
-              submitBtn.innerHTML = originalText;
-              submitBtn.disabled = false;
-            }
-          });
-        });
-
-        // Função de scroll para o formulário
-        window.scrollToForm = function () {
-          const form = document.getElementById('form_principal');
-          const nav = document.querySelector('nav');
-
-          if (form && nav) {
-            const navbarHeight = nav.offsetHeight;
-            const offset = form.getBoundingClientRect().top + window.scrollY - navbarHeight - 20;
-            window.scrollTo({ top: offset, behavior: 'smooth' });
+          } catch (error) {
+            console.error('Erro:', error);
+            alert('Erro ao enviar. Tente novamente.');
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
           }
-        };
+        });
+      });
 
-        // Efeito de navbar ao scroll
-        const nav = document.querySelector('nav');
-        if (nav) {
-          window.addEventListener('scroll', () => {
-            nav.classList.toggle('scrolled', window.scrollY > 50);
-          });
-        }
+      // Função de scroll para o formulário
+      window.scrollToForm = function () {
+        const form = document.getElementById('form_principal');
+        const navbarHeight = document.querySelector('nav').offsetHeight;
+        const offset = form.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 20;
+        window.scrollTo({ top: offset, behavior: 'smooth' });
+      };
+
+      // Efeito de navbar ao scroll
+      const nav = document.querySelector('nav');
+      window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 50);
       });
     });
+
+
 
 
 
