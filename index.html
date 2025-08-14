@@ -755,14 +755,12 @@
       const forms = document.querySelectorAll('form');
 
       forms.forEach(form => {
-        // Adicione um atributo netlify ou data-netlify="true" ao formulário no HTML
         form.setAttribute('netlify', 'true');
         form.setAttribute('data-netlify', 'true');
 
         form.addEventListener('submit', async function (e) {
           e.preventDefault();
 
-          // Dispara o evento do Meta Pixel
           if (typeof fbq !== 'undefined') {
             fbq('track', 'Contact');
           }
@@ -774,9 +772,8 @@
           submitBtn.disabled = true;
 
           try {
-            // Adicione um campo hidden para o Netlify Forms
             const formData = new FormData(this);
-            formData.append('form-name', form.getAttribute('name') || 'contact'); // Use o nome do seu formulário
+            formData.append('form-name', form.getAttribute('name') || 'contact');
 
             const response = await fetch('/', {
               method: 'POST',
@@ -790,21 +787,20 @@
                 form.reset();
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
-                // Opcional: redirecionar para página de obrigado
-                // window.location.href = '/obrigado';
+                alert('Obrigado pelo seu contato! Seu formulário foi enviado com sucesso. Nossa equipe entrará em contato em breve.');
               }, 1500);
             } else {
               throw new Error('Falha no envio do formulário.');
             }
           } catch (error) {
             console.error('Erro:', error);
-            // Fallback: envie o formulário da maneira tradicional
-            form.setAttribute('action', '/');
-            form.setAttribute('method', 'POST');
-            form.submit();
+            alert('Houve um erro ao enviar o formulário. Por favor, tente novamente.');
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
           }
         });
       });
+
       // Função de scroll para o formulário
       window.scrollToForm = function () {
         const form = document.getElementById('form_principal');
