@@ -755,49 +755,56 @@
       const forms = document.querySelectorAll('form');
 
       forms.forEach(form => {
+        // Adicione um atributo netlify ou data-netlify="true" ao formulário no HTML
+        form.setAttribute('netlify', 'true');
+        form.setAttribute('data-netlify', 'true');
+
         form.addEventListener('submit', async function (e) {
-          e.preventDefault(); // impede redirecionamento
+          e.preventDefault();
 
           // Dispara o evento do Meta Pixel
-          fbq('track', 'Contact');
+          if (typeof fbq !== 'undefined') {
+            fbq('track', 'Contact');
+          }
 
-          // Botão de envio
           const submitBtn = this.querySelector('button[type="submit"]');
           const originalText = submitBtn.innerHTML;
 
-          // Mostra carregando
           submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
           submitBtn.disabled = true;
 
           try {
-            // Envia via fetch para Netlify
+            // Adicione um campo hidden para o Netlify Forms
+            const formData = new FormData(this);
+            formData.append('form-name', form.getAttribute('name') || 'contact'); // Use o nome do seu formulário
+
             const response = await fetch('/', {
               method: 'POST',
               headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-              body: new URLSearchParams(new FormData(this)).toString()
+              body: new URLSearchParams(formData).toString()
             });
 
             if (response.ok) {
-              // Mostra sucesso
               submitBtn.innerHTML = '<i class="fas fa-check"></i> Enviado!';
               setTimeout(() => {
                 form.reset();
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
-                alert('Obrigado! Nossa equipe entrará em contato em breve.');
+                // Opcional: redirecionar para página de obrigado
+                // window.location.href = '/obrigado';
               }, 1500);
             } else {
               throw new Error('Falha no envio do formulário.');
             }
           } catch (error) {
             console.error('Erro:', error);
-            alert('Erro ao enviar. Tente novamente.');
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
+            // Fallback: envie o formulário da maneira tradicional
+            form.setAttribute('action', '/');
+            form.setAttribute('method', 'POST');
+            form.submit();
           }
         });
       });
-
       // Função de scroll para o formulário
       window.scrollToForm = function () {
         const form = document.getElementById('form_principal');
