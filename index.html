@@ -283,7 +283,8 @@
                 <p class="text-slate-500 mb-6 md:mb-8">Preencha o formulário e nossa equipe entrará em contato em menos
                   de 24h com uma estratégia personalizada.</p>
 
-                <form name="contact" method="POST" data-netlify="true" id="contactForm" class="space-y-6">
+                <form name="contact" method="POST" netlify class="space-y-6" id="contactForm">
+                  <!-- Campo OBRIGATÓRIO para Netlify -->
                   <input type="hidden" name="form-name" value="contact">
 
                   <!-- Campo honeypot simplificado -->
@@ -755,32 +756,41 @@
 
       forms.forEach(form => {
         form.addEventListener('submit', async function (e) {
-          e.preventDefault(); // Bloqueia redirecionamento Netlify
+          e.preventDefault(); // impede redirecionamento
 
+          // Dispara o evento do Meta Pixel
+          fbq('track', 'Contact');
+
+          // Botão de envio
           const submitBtn = this.querySelector('button[type="submit"]');
           const originalText = submitBtn.innerHTML;
 
+          // Mostra carregando
           submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
           submitBtn.disabled = true;
 
           try {
             // Envia via fetch para Netlify
-            await fetch('/', {
+            const response = await fetch('/', {
               method: 'POST',
               headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
               body: new URLSearchParams(new FormData(this)).toString()
             });
 
-            submitBtn.innerHTML = '<i class="fas fa-check"></i> Enviado!';
-            setTimeout(() => {
-              this.reset();
-              submitBtn.innerHTML = originalText;
-              submitBtn.disabled = false;
-              alert('Obrigado! Nossa equipe entrará em contato em breve.');
-            }, 1500);
-
+            if (response.ok) {
+              // Mostra sucesso
+              submitBtn.innerHTML = '<i class="fas fa-check"></i> Enviado!';
+              setTimeout(() => {
+                form.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                alert('Obrigado! Nossa equipe entrará em contato em breve.');
+              }, 1500);
+            } else {
+              throw new Error('Falha no envio do formulário.');
+            }
           } catch (error) {
-            console.error(error);
+            console.error('Erro:', error);
             alert('Erro ao enviar. Tente novamente.');
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
