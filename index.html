@@ -18,7 +18,7 @@
         !function (f, b, e, v, n, t, s) {
             if (f.fbq) return; n = f.fbq = function () {
                 n.callMethod ?
-                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
             };
             if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
             n.queue = []; t = b.createElement(e); t.async = !0;
@@ -275,16 +275,17 @@
                                     </div>
 
                                     <div>
-                                        <select id="business" name="business" required
+                                        <select id="carros" name="carros" required
                                             class="form-input w-full px-5 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                            <option value="" disabled selected>Qual seu faturamento mensal?</option>
-                                            <option value="20-30 mil">R$ 20.000 - R$ 30.000</option>
-                                            <option value="30-40 mil">R$ 30.000 - R$ 40.000</option>
-                                            <option value="40-50 mil">R$ 40.000 - R$ 50.000</option>
-                                            <option value="50-60 mil">R$ 50.000 - R$ 60.000</option>
-                                            <option value="100+ mil">Acima de R$ 100.000</option>
+                                            <option value="" disabled selected>Quantos carros você vende por mês?
+                                            </option>
+                                            <option value="1-5 carros">5 a 10 carros</option>
+                                            <option value="6-10 carros">11 a 20 carros</option>
+                                            <option value="11-20 carros">21 a 30 carros</option>
+                                            <option value="30+ carros">Acima de 30 carros</option>
                                         </select>
                                     </div>
+
 
                                     <div class="pt-2">
                                         <button type="submit"
