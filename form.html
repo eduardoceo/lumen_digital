@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lumen • Assessoria Digital</title>
+  <style>
+    * { box-sizing: border-box; font-family: Inter, Arial, sans-serif; }
+
+    body {
+      margin: 0;
+      background: #000;
+      color: #f2ac1a;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 520px;
+    }
+
+    .logo {
+      text-align: center;
+      font-weight: 600;
+      letter-spacing: 3px;
+      margin-bottom: 64px;
+      font-size: 20px;
+    }
+
+    .question {
+      font-size: 32px;
+      line-height: 1.25;
+      margin-bottom: 28px;
+    }
+
+    input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: none;
+      color: #f2ac1a;
+      font-size: 22px;
+      padding: 16px 0;
+      outline: none;
+    }
+
+    .progress {
+      height: 1px;
+      width: 100%;
+      background: rgba(242,172,26,0.15);
+      margin-top: 18px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 80%;
+      background: #f2ac1a;
+      transition: width 0.25s ease;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .option {
+      background: #f2ac1a;
+      color: #ffffff;
+      padding: 16px;
+      text-align: center;
+      border-radius: 24px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .option:hover {
+      filter: brightness(0.95);
+    }
+
+    .option:hover {
+      background: #f2ac1a;
+      color: #000;
+    }
+
+    .actions {
+      margin-top: 28px;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    button {
+      background: #f2ac1a;
+      border: none;
+      color: #000;
+      padding: 8px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+    button:hover {
+      filter: brightness(0.95);
+    }
+
+    .error {
+      margin-top: 12px;
+      font-size: 13px;
+      color: #ff5c5c;
+    }
+
+    @media (max-width: 600px) {
+      .question { font-size: 26px; }
+      input { font-size: 20px; }
+      button {
+        width: auto;
+        padding: 10px 24px;
+        font-size: 14px;
+      }
+    }
+      input { font-size: 21px; }
+      button {
+        width: 100%;
+        padding: 18px;
+        font-size: 17px;
+      }
+    }
+      input { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">LUMEN<br>ASSESSORIA DIGITAL</div>
+
+    <div class="question" id="question"></div>
+    <div id="field"></div>
+
+    <div class="progress"><div class="progress-bar" id="progress"></div></div>
+
+    <div class="actions">
+      <button id="next">AVANÇAR</button>
+    </div>
+
+    <div class="error" id="error"></div>
+  </div>
+
+  <script>
+    const steps = [
+      { type: 'text', label: 'Qual é o seu nome?' },
+      { type: 'email', label: 'Qual o seu melhor e-mail?' },
+      { type: 'phone', label: 'Qual o seu telefone?' },
+      { type: 'options', label: 'Qual é o seu cargo?', options: ['Dono', 'Sócio', 'Gerente'] },
+      { type: 'options', label: 'Quando pretende começar este projeto?', options: ['Agora', 'Próximos 7 dias', 'Próximas 2–4 semanas', 'Só estou avaliando'] },
+      { type: 'options', label: 'Qual o faturamento mensal da sua empresa? (informação privada)', options: ['Abaixo de R$20 mil', 'R$20 mil a R$30 mil', 'R$30 mil a R$40 mil', 'R$40 mil a R$50 mil', 'R$50 mil a R$70 mil', 'R$70 mil a R$100 mil', 'R$100 mil a R$200 mil', 'R$200 mil a R$300 mil', 'R$300 mil a R$400 mil', '+ de R$500 mil'] }
+    ];
+
+    let current = 0;
+    const answers = {};
+
+    const questionEl = document.getElementById('question');
+    const fieldEl = document.getElementById('field');
+    const progressEl = document.getElementById('progress');
+    const errorEl = document.getElementById('error');
+    const nextBtn = document.getElementById('next');
+
+    function loadStep() {
+      const step = steps[current];
+      questionEl.innerText = step.label;
+      fieldEl.innerHTML = '';
+      errorEl.innerText = '';
+      progressEl.style.width = '80%';
+
+      if (step.type === 'text' || step.type === 'email' || step.type === 'phone') {
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.placeholder = 'Digite aqui';
+        input.id = 'input';
+        fieldEl.appendChild(input);
+        input.focus();
+        input.addEventListener('keydown', e => e.key === 'Enter' && next());
+      }
+
+      if (step.type === 'options') {
+        const box = document.createElement('div');
+        box.className = 'options';
+        step.options.forEach(opt => {
+          const div = document.createElement('div');
+          div.className = 'option';
+          div.innerText = opt;
+          div.onclick = () => selectOption(opt);
+          box.appendChild(div);
+        });
+        fieldEl.appendChild(box);
+      }
+    }
+
+    function validate(value, type) {
+      if (type === 'email') return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+      if (type === 'phone') return /^\(?\d{2}\)?\s?9?\d{4}-?\d{4}$/.test(value);
+      return value.length > 1;
+    }
+
+    function next() {
+      const step = steps[current];
+      const input = document.getElementById('input');
+
+      if (step.type !== 'options') {
+        if (!validate(input.value, step.type)) {
+          errorEl.innerText = 'Preencha corretamente para continuar';
+          return;
+        }
+        answers[step.label] = input.value;
+      }
+
+      progressEl.style.width = '100%';
+
+      setTimeout(() => {
+        current++;
+        if (current < steps.length) {
+          loadStep();
+        } else {
+          questionEl.innerText = 'Pronto. Recebemos suas respostas.';
+          fieldEl.innerHTML = '';
+          nextBtn.innerText = 'ENVIAR';
+        }
+      }, 250);
+    }
+
+    function selectOption(value) {
+      answers[steps[current].label] = value;
+      next();
+    }
+
+    nextBtn.onclick = next;
+    loadStep();
+  </script>
+</body>
+</html>
