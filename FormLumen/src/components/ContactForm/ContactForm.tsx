@@ -8,14 +8,8 @@ const FORM_NAME = 'contact'
 
 const questions: Question[] = [
   { id: 'nome', label: 'Seu nome completo?', placeholder: 'Digite seu nome completo', type: 'text' },
-  {
-    id: 'email',
-    label: 'Qual é o seu melhor e-mail?',
-    placeholder: 'seu@email.com',
-    type: 'email',
-    validation: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
-  },
   { id: 'telefone', label: 'Qual é o seu telefone?', placeholder: '(11) 99999-9999', type: 'tel' },
+  { id: 'empresa', label: 'Qual o nome da sua empresa?', placeholder: 'Digite o nome da sua empresa', type: 'text' },
   { id: 'cargo', label: 'Qual é o seu cargo?', type: 'select', options: ['Dono', 'Sócio', 'Gerente'] },
   {
     id: 'inicio',
@@ -55,8 +49,8 @@ const ContactForm = ({ logoUrl }: ContactFormProps) => {
 
   const [formData, setFormData] = useState<FormData>({
     nome: '',
-    email: '',
     telefone: '',
+    empresa: '',
     cargo: '',
     inicio: '',
     faturamento: '',
@@ -131,8 +125,8 @@ const ContactForm = ({ logoUrl }: ContactFormProps) => {
         <input type="hidden" name="form-name" value={FORM_NAME} />
         <input type="hidden" name="bot-field" />
         <input type="hidden" name="nome" value={formData.nome} />
-        <input type="hidden" name="email" value={formData.email} />
         <input type="hidden" name="telefone" value={formData.telefone} />
+        <input type="hidden" name="empresa" value={formData.empresa} />
         <input type="hidden" name="cargo" value={formData.cargo} />
         <input type="hidden" name="inicio" value={formData.inicio} />
         <input type="hidden" name="faturamento" value={formData.faturamento} />
