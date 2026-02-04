@@ -9,53 +9,71 @@ const SuccessScreen = ({ logoUrl }: SuccessScreenProps) => {
     'https://wa.me/5547991414884?text=Olá!%20Acabei%20de%20enviar%20meus%20dados%20no%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20as%20soluções%20da%20Lumen.';
 
   return (
-    <div className="text-center fade-in">
+    <div className="text-center fade-in px-4">
       {/* Logo */}
-      <div className="flex justify-center mb-8">
+      <div className="flex justify-center mb-10">
         {logoUrl ? (
-          <img src={logoUrl} alt="Logo" className="h-14 w-auto object-contain" />
+          <img
+            src={logoUrl}
+            alt="Logo"
+            className="h-14 w-auto object-contain"
+          />
         ) : (
-          <div className="h-12 w-32 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground text-sm">
+          <div className="h-12 w-40 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground text-sm">
             Lumen Assessoria Digital
           </div>
         )}
       </div>
 
       {/* Check */}
-      <div className="mb-8 inline-flex items-center justify-center">
-        <div className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center success-checkmark">
-          <div className="w-14 h-14 rounded-full bg-primary flex items-center justify-center">
-            <Check className="w-7 h-7 text-primary-foreground" strokeWidth={3} />
+      <div className="mb-10 inline-flex items-center justify-center">
+        <div className="w-24 h-24 rounded-full bg-primary/20 flex items-center justify-center success-checkmark">
+          <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center">
+            <Check
+              className="w-8 h-8 text-primary-foreground"
+              strokeWidth={3}
+            />
           </div>
         </div>
       </div>
 
-      <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
+      {/* Título */}
+      <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
         Obrigado!
       </h2>
 
-      <p className="text-lg md:text-xl text-muted-foreground max-w-md mx-auto mb-10">
+      {/* Texto */}
+      <p className="text-lg md:text-xl text-muted-foreground max-w-md mx-auto mb-12">
         Recebemos suas informações. Nossa equipe entrará em contato em breve.
       </p>
 
       {/* Atendimento prioritário */}
-      <div className="mb-10">
-        <p className="text-sm font-semibold text-foreground mb-2">
-          Atendimento prioritário
-        </p>
-        <p className="text-sm text-muted-foreground mb-4">
-          Quer agilizar? Fale direto com nosso time no WhatsApp.
-        </p>
+      <div className="mb-14 max-w-xl mx-auto">
+        <div className="relative rounded-3xl p-10 bg-gradient-to-br from-green-500 to-green-600 text-white shadow-2xl">
+          {/* Badge */}
+          <span className="absolute -top-4 left-1/2 -translate-x-1/2 px-5 py-1.5 rounded-full bg-white text-green-600 text-xs font-bold uppercase tracking-wide shadow-md">
+            Prioritário
+          </span>
 
-        <a
-          href={whatsappLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-3 px-6 py-4 rounded-lg bg-green-600 hover:bg-green-700 text-white font-semibold transition"
-        >
-          <MessageCircle className="w-5 h-5" />
-          Falar no WhatsApp agora
-        </a>
+          <h3 className="text-2xl md:text-3xl font-bold mb-4 flex items-center justify-center gap-2">
+            ⚡ Atendimento Prioritário
+          </h3>
+
+          <p className="text-base md:text-lg opacity-95 mb-8">
+            Quer ser atendido <strong>mais rápido</strong> e sem espera?  
+            Fale agora direto com nosso time no WhatsApp.
+          </p>
+
+          <a
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-3 w-full px-6 py-5 rounded-2xl bg-white text-green-600 text-lg font-bold hover:scale-[1.03] transition-transform"
+          >
+            <MessageCircle className="w-6 h-6" />
+            Falar no WhatsApp agora
+          </a>
+        </div>
       </div>
 
       {/* Info final */}

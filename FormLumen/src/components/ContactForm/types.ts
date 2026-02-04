@@ -12,8 +12,8 @@ export interface Question {
 
 export interface FormData {
   nome: string
+  email: string
   telefone: string
-  empresa: string
   cargo: string
   inicio: string
   faturamento: string
