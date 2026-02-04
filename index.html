@@ -227,68 +227,7 @@
                                 <h2 class="text-2xl md:text-3xl font-bold mb-4">Cadastre-se e receba o <span
                                         class="gradient-text">contato</span> do nosso time!</h2>
 
-                                <form name="contact" method="POST" netlify class="space-y-6" id="contactForm">
-                                    <input type="hidden" name="form-name" value="contact">
-                                    <div class="hidden">
-                                        <input name="bot-field" />
-                                    </div>
-
-                                    <!-- Nome -->
-                                    <div>
-                                        <input type="text" id="name" name="name" required
-                                            class="form-input w-full px-5 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                            placeholder="Nome">
-                                    </div>
-
-                                    <!-- Telefone/WhatsApp -->
-                                    <div>
-                                        <input type="tel" id="phone" name="phone" required
-                                            class="form-input w-full px-5 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                            placeholder="Telefone/WhatsApp">
-                                    </div>
-
-                                    <!-- Nome da empresa -->
-                                    <div>
-                                        <input type="text" id="company" name="company" required
-                                            class="form-input w-full px-5 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                            placeholder="Nome da empresa">
-                                    </div>
-
-                                    <!-- Faturamento aproximado -->
-                                    <div>
-                                        <select id="revenue" name="revenue" required
-                                            class="form-input w-full px-5 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                            <option value="" disabled selected>Faturamento aproximado</option>
-                                            <option value="ate-20mil">até R$ 20 mil</option>
-                                            <option value="20-50mil">R$ 20–50 mil</option>
-                                            <option value="50-100mil">R$ 50–100 mil</option>
-                                            <option value="acima-100mil">Acima de R$ 100 mil</option>
-                                        </select>
-                                    </div>
-
-                                    <!-- Quando pretende começar -->
-                                    <div>
-                                        <select id="timing" name="timing" required
-                                            class="form-input w-full px-5 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                            <option value="" disabled selected>Quando você pretende começar esse
-                                                projeto?</option>
-                                            <option value="imediato">Imediatamente</option>
-                                            <option value="7-dias">Nos próximos 7 dias</option>
-                                            <option value="2-4-semanas">Nas próximas 2–4 semanas</option>
-                                            <option value="avaliando">Só estou avaliando</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="pt-2">
-                                        <button type="submit"
-                                            class="btn-primary w-full py-4 px-6 rounded-lg font-semibold text-white text-lg">
-                                            Quero escalar meu negócio <i class="fas fa-paper-plane ml-2"></i>
-                                        </button>
-                                        <p class="text-xs text-slate-500 mt-2 text-center">
-                                            <i class="fas fa-lock mr-1"></i> Seus dados estão seguros conosco
-                                        </p>
-                                    </div>
-                                </form>
+                               
 
                                 <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field"
                                     hidden>
