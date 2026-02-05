@@ -3,6 +3,8 @@ import { Question, FormData } from './types'
 import ProgressBar from './ProgressBar'
 import QuestionStep from './QuestionStep'
 import SuccessScreen from './SuccessScreen'
+import logoLumen from '/logo-lumen.png'
+
 
 const FORM_NAME = 'contact'
 
@@ -143,10 +145,11 @@ const ContactForm = ({ logoUrl }: ContactFormProps) => {
           {!isComplete && (
             <div className="flex justify-center mb-12">
               <img
-                src="/logo-lumen.png"
+                src={logoLumen}
                 alt="Lumen Assessoria Digital"
                 className="h-12 w-auto"
               />
+
 
             </div>
           )}
