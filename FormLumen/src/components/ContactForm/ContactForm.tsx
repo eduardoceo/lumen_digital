@@ -5,7 +5,6 @@ import QuestionStep from './QuestionStep'
 import SuccessScreen from './SuccessScreen'
 import logoLumen from '/logo-lumen.png'
 
-
 const FORM_NAME = 'contact'
 
 const questions: Question[] = [
@@ -102,12 +101,10 @@ const ContactForm = ({ logoUrl }: ContactFormProps) => {
         setIsAnimating(false)
       }, 300)
     } else {
-      // último passo → aguardar revenue antes de enviar
       setShouldSubmit(true)
     }
   }
 
-  // 🚀 ENVIO GARANTIDO APÓS O STATE ATUALIZAR
   useEffect(() => {
     if (shouldSubmit && formData.faturamento) {
       setIsAnimating(true)
@@ -143,14 +140,12 @@ const ContactForm = ({ logoUrl }: ContactFormProps) => {
       <div className="flex-1 flex items-center justify-center px-6 py-12">
         <div className="w-full max-w-2xl">
           {!isComplete && (
-            <div className="flex justify-center mb-12">
+            <div className="flex justify-center mb-14">
               <img
                 src={logoLumen}
                 alt="Lumen Assessoria Digital"
-                className="h-24 w-auto"
+                className="h-32 md:h-40 w-auto object-contain"
               />
-
-
             </div>
           )}
 
