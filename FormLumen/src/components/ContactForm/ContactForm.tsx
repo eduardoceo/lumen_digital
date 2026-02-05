@@ -142,13 +142,12 @@ const ContactForm = ({ logoUrl }: ContactFormProps) => {
         <div className="w-full max-w-2xl">
           {!isComplete && (
             <div className="flex justify-center mb-12">
-              {logoUrl ? (
-                <img src={logoUrl} alt="Logo" className="h-12 w-auto" />
-              ) : (
-                <div className="h-12 w-48 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground text-sm">
-                  Lumen Assessoria Digital
-                </div>
-              )}
+              <img
+                src="/logo-lumen.png"
+                alt="Lumen Assessoria Digital"
+                className="h-12 w-auto"
+              />
+
             </div>
           )}
 
