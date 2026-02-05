@@ -144,7 +144,7 @@ const ContactForm = ({ logoUrl }: ContactFormProps) => {
               <img
                 src={logoLumen}
                 alt="Lumen Assessoria Digital"
-                className="h-32 md:h-40 w-auto object-contain"
+                className="h-40 md:h-40 w-auto object-contain"
               />
             </div>
           )}
