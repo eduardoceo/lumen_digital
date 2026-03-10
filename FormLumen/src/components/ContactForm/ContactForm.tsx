@@ -105,15 +105,15 @@ const ContactForm = ({ logoUrl }: ContactFormProps) => {
     }
   }
 
-  useEffect(() => {
-    if (shouldSubmit && formData.faturamento) {
-      setIsAnimating(true)
-      handleSubmitNetlify(formData).then(() => {
-        setIsComplete(true)
-        setIsAnimating(false)
-      })
-    }
-  }, [shouldSubmit, formData.faturamento])
+useEffect(() => {
+  if (shouldSubmit && formData.faturamento) {
+    setIsAnimating(true)
+
+    handleSubmitNetlify(formData).then(() => {
+      window.location.href = "/obrigado.html"
+    })
+  }
+}, [shouldSubmit, formData.faturamento])
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
