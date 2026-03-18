@@ -110,8 +110,9 @@ useEffect(() => {
     setIsAnimating(true)
 
     handleSubmitNetlify(formData).then(() => {
-      window.location.href = "/obrigado.html"
-    })
+  const params = window.location.search; // pega ?fbclid=xxxxx
+  window.location.href = "/obrigado.html" + params;
+})
   }
 }, [shouldSubmit, formData.faturamento])
 
