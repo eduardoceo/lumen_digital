@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Question, FormData } from './types'
 import ProgressBar from './ProgressBar'
 import QuestionStep from './QuestionStep'
@@ -54,6 +54,9 @@ const ContactForm = ({ logoUrl }: ContactFormProps) => {
   const [isComplete, setIsComplete] = useState(false)
   const [shouldSubmit, setShouldSubmit] = useState(false)
 
+  // ✅ Salva o fbclid assim que o componente monta, antes de qualquer navegação
+  const fbclid = useRef(new URLSearchParams(window.location.search).get('fbclid') || '')
+
   const [formData, setFormData] = useState<FormData>({
     nome: '',
     email: '',
@@ -105,16 +108,17 @@ const ContactForm = ({ logoUrl }: ContactFormProps) => {
     }
   }
 
-useEffect(() => {
-  if (shouldSubmit && formData.faturamento) {
-    setIsAnimating(true)
+  useEffect(() => {
+    if (shouldSubmit && formData.faturamento) {
+      setIsAnimating(true)
 
-    handleSubmitNetlify(formData).then(() => {
-  const params = window.location.search; // pega ?fbclid=xxxxx
-  window.location.href = "/obrigado.html" + params;
-})
-  }
-}, [shouldSubmit, formData.faturamento])
+      handleSubmitNetlify(formData).then(() => {
+        // ✅ Usa o fbclid salvo no início, não o da URL atual
+        const params = fbclid.current ? `?fbclid=${fbclid.current}` : ''
+        window.location.href = '/obrigado.html' + params
+      })
+    }
+  }, [shouldSubmit, formData.faturamento])
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -146,7 +150,6 @@ useEffect(() => {
                 src={logoLumen}
                 alt="Lumen Assessoria Digital"
                 className="h-56 md:h-64 w-auto object-contain"
-
               />
             </div>
           )}
