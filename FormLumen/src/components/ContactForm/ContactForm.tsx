@@ -30,7 +30,6 @@ const questions: Question[] = [
     subtitle: 'Informação privada.',
     type: 'select',
     options: [
-      'Abaixo de R$20 mil',
       'R$20 mil a R$30 mil',
       'R$30 mil a R$40 mil',
       'R$40 mil a R$50 mil',
