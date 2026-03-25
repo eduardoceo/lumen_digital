@@ -17,6 +17,7 @@ const questions: Question[] = [
     validation: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
   },
   { id: 'telefone', label: 'Qual é o seu telefone?', placeholder: '(11) 99999-9999', type: 'tel' },
+  { id: 'empresa', label: 'Qual é o nome da sua empresa?', placeholder: '', type: 'text' },
   { id: 'cargo', label: 'Qual é o seu cargo?', type: 'select', options: ['Dono', 'Sócio', 'Gerente'] },
   {
     id: 'inicio',
@@ -60,6 +61,7 @@ const ContactForm = ({ logoUrl }: ContactFormProps) => {
     nome: '',
     email: '',
     telefone: '',
+    empresa: '',
     cargo: '',
     inicio: '',
     faturamento: '',
@@ -136,6 +138,7 @@ const ContactForm = ({ logoUrl }: ContactFormProps) => {
         <input type="hidden" name="nome" value={formData.nome} />
         <input type="hidden" name="email" value={formData.email} />
         <input type="hidden" name="telefone" value={formData.telefone} />
+        <input type="hidden" name="empresa" value={formData.empresa} />
         <input type="hidden" name="cargo" value={formData.cargo} />
         <input type="hidden" name="inicio" value={formData.inicio} />
         <input type="hidden" name="faturamento" value={formData.faturamento} />
